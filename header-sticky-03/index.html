@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Poprawiony header z funkcjami</title>
+<link href="../../weekendfm-2025/assets/lib/bootstrap-5.3.7-dist/css/bootstrap.css" rel="stylesheet" />
+
+<style>
+  body {
+    margin: 0;
+    padding-top: 140px; /* na header */
+  }
+
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1060;
+  }
+
+  /* TOP BAR */
+  .top-bar {
+    height: 30px;
+    background: #f1f3f5;
+    font-size: 0.85rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    border-bottom: 1px solid #ddd;
+    transition: top 0.3s ease;
+    position: relative; /* żeby animacja działała */
+  }
+
+  /* ukrywanie top-bar */
+  .top-bar.hidden {
+    top: -30px;
+    position: fixed;
+  }
+
+  /* MIDDLE-BAR */
+  .middle-bar {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    padding: 0 1rem;
+    border-bottom: 1px solid #ddd;
+    background: white;
+    position: sticky;
+    top: 0;
+    z-index: 1070;
+  }
+
+  .middle-bar .logo {
+    height: 40px;
+    user-select: none;
+  }
+
+  .main-menu {
+    margin-left: 2rem;
+    display: flex;
+    gap: 1rem;
+    flex-grow: 1;
+  }
+
+  .main-menu > li {
+    position: relative;
+    list-style: none;
+  }
+
+  .main-menu > li > a {
+    text-decoration: none;
+    color: #222;
+    font-weight: 600;
+    padding: 0.5rem;
+    display: block;
+  }
+
+  .mega-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 300px;
+    background: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 6px rgb(0 0 0 / 0.1);
+    display: none;
+    padding: 1rem;
+    z-index: 1100;
+  }
+
+  .main-menu > li:hover .mega-menu {
+    display: block;
+  }
+
+  /* PLAYER BUTTON */
+  .player-btn {
+    padding: 0.35rem 1rem;
+    border: 1px solid #007bff;
+    background: #007bff;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.3s;
+    white-space: nowrap;
+  }
+  .player-btn:hover {
+    background-color: #0056b3;
+  }
+
+  /* BOTTOM-BAR */
+  .bottom-bar {
+    height: 40px;
+    background: #343a40;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    position: sticky;
+    top: 50px; /* pod middle-bar */
+    z-index: 1065;
+  }
+
+  .bottom-bar .info-text {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+  }
+
+  .now-playing, .on-air {
+    font-weight: 600;
+  }
+
+  .social-icons {
+    display: flex;
+    gap: 15px;
+  }
+
+  .social-icons a {
+    color: white;
+    font-size: 1.25rem;
+    text-decoration: none;
+  }
+
+  .search-btn {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.25rem;
+    cursor: pointer;
+    margin-left: 1rem;
+  }
+
+  /* Napisz do nas - ikonka + tekst */
+  .write-us-btn {
+    background: transparent;
+    border: 1px solid white;
+    color: white;
+    font-weight: 600;
+    font-size: 0.85rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    user-select: none;
+    white-space: nowrap;
+  }
+
+  .write-us-btn svg {
+    fill: white;
+    width: 16px;
+    height: 16px;
+  }
+
+  /* MOBILE */
+  @media (max-width: 767.98px) {
+    body {
+      padding-top: 120px; /* top-bar ukryty */
+    }
+    .top-bar {
+      display: none !important;
+    }
+
+    .middle-bar {
+      justify-content: space-between;
+      padding: 0 0.75rem;
+      position: sticky;
+      top: 0;
+    }
+
+    .main-menu {
+      display: none !important;
+    }
+
+    /* Prosta własna ikona hamburger */
+    .hamburger-btn {
+      border: none;
+      background: none;
+      cursor: pointer;
+      padding: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hamburger-icon {
+      width: 24px;
+      height: 18px;
+      display: block;
+      position: relative;
+    }
+
+    .hamburger-icon span {
+      background: #333;
+      position: absolute;
+      height: 3px;
+      width: 100%;
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+
+    .hamburger-icon span:nth-child(1) {
+      top: 0;
+    }
+    .hamburger-icon span:nth-child(2) {
+      top: 7.5px;
+    }
+    .hamburger-icon span:nth-child(3) {
+      bottom: 0;
+    }
+
+    /* Logo wycentrowane */
+    .logo-container {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    .logo {
+      height: 32px;
+    }
+
+    /* Prawy przycisk (social + szukaj + player) */
+    .right-menu-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .right-menu-btn {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: #333;
+      cursor: pointer;
+      padding: 4px 6px;
+      display: flex;
+      align-items: center;
+    }
+
+    /* Przycisk player - po lewej od prawego menu */
+    .player-btn-mobile {
+      padding: 0.25rem 0.75rem;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      white-space: nowrap;
+      border: 1px solid #007bff;
+      background: #007bff;
+      color: white;
+      cursor: pointer;
+      user-select: none;
+      transition: background-color 0.3s;
+    }
+
+    .player-btn-mobile:hover {
+      background-color: #0056b3;
+    }
+
+    /* bottom-bar rotujący tekst i ikonę "napisz do nas" */
+    .bottom-bar {
+      height: 40px;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 0.9rem;
+      position: sticky;
+      top: 50px;
+    }
+
+    .bottom-bar .info-text {
+      gap: 6px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .social-icons {
+      display: none !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+
+  <!-- TOP-BAR desktop only -->
+  <div class="top-bar d-none d-md-flex">
+    <span>Aktualności</span>
+    <span>Pogoda</span>
+    <span>Kontakt</span>
+  </div>
+
+  <!-- MIDDLE-BAR -->
+  <div class="middle-bar">
+
+    <!-- MOBILE hamburger -->
+    <button class="hamburger-btn d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mainMenuMobile" aria-label="Menu">
+      <span class="hamburger-icon">
+        <span></span><span></span><span></span>
+      </span>
+    </button>
+
+    <!-- LOGO centered -->
+    <div class="logo-container">
+      <img src="radio-weekendfm-logo-nomargin.svg" alt="Logo" class="logo" />
+    </div>
+
+    <!-- DESKTOP main menu -->
+    <ul class="main-menu d-none d-md-flex">
+      <li>
+        <a href="#">Start</a>
+        <div class="mega-menu">
+          <strong>Mega-menu Start</strong>
+          <ul>
+            <li><a href="#">Podstrona 1</a></li>
+            <li><a href="#">Podstrona 2</a></li>
+          </ul>
+        </div>
+      </li>
+      <li>
+        <a href="#">O nas</a>
+        <div class="mega-menu">
+          <strong>Mega-menu O nas</strong>
+          <ul>
+            <li><a href="#">Historia</a></li>
+            <li><a href="#">Zespół</a></li>
+          </ul>
+        </div>
+      </li>
+      <li><a href="#">Kontakt</a></li>
+    </ul>
+
+    <!-- DESKTOP player button -->
+    <button class="player-btn d-none d-md-inline">Player ▶️</button>
+
+    <!-- MOBILE right menu + player -->
+    <div class="right-menu-container d-md-none">
+      <button class="player-btn-mobile" type="button">Player ▶️</button>
+      <button class="right-menu-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#socialMenuMobile" aria-label="Social i Szukaj">
+        ⋯
+      </button>
+    </div>
+  </div>
+
+  <!-- BOTTOM-BAR -->
+  <div class="bottom-bar d-flex d-md-flex justify-content-between">
+
+    <!-- info (desktop i mobile) -->
+    <div class="info-text">
+      <span class="now-playing">Co teraz gramy: <strong>Utwór XYZ</strong></span>
+      <span class="on-air d-none">Na antenie: <strong>Jan Kowalski</strong></span>
+      <button class="write-us-btn d-none d-md-none" aria-label="Napisz do nas">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2 3h20v18H2z" fill="none"/><path d="M20 3H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2Zm0 2v.01L12 13 4 5.01V5h16Z"/></svg> Napisz do nas
+      </button>
+    </div>
+
+    <!-- social + szukaj desktop -->
+    <div class="d-none d-md-flex align-items-center">
+      <div class="social-icons">
+        <a href="#" title="Facebook" aria-label="Facebook">F</a>
+        <a href="#" title="Twitter" aria-label="Twitter">T</a>
+        <a href="#" title="Instagram" aria-label="Instagram">I</a>
+      </div>
+      <button class="search-btn" aria-label="Szukaj">🔍</button>
+    </div>
+  </div>
+
+</header>
+  <!-- MAIN -->
+  <main class="container">
+    <h1>Przykładowa treść</h1>
+    <p>Scrolluj w dół, by zobaczyć efekt...</p>
+    <p style="height: 2000px;"></p>
+  </main>
+<!-- OFFCANVAS: main menu mobile -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="mainMenuMobile" aria-labelledby="mainMenuMobileLabel">
+  <div class="offcanvas-header">
+    <h5 id="mainMenuMobileLabel">Menu</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Zamknij"></button>
+  </div>
+  <div class="offcanvas-body">
+    <ul class="list-unstyled">
+      <li><a href="#">Start</a></li>
+      <li><a href="#">O nas</a></li>
+      <li><a href="#">Kontakt</a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- OFFCANVAS: social + search mobile -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="socialMenuMobile" aria-labelledby="socialMenuMobileLabel">
+  <div class="offcanvas-header">
+    <h5 id="socialMenuMobileLabel">Social i Szukaj</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Zamknij"></button>
+  </div>
+  <div class="offcanvas-body d-flex flex-column gap-3">
+    <div class="social-icons d-flex gap-3 justify-content-center">
+      <a href="#" title="Facebook" aria-label="Facebook">Facebook</a>
+      <a href="#" title="Twitter" aria-label="Twitter">Twitter</a>
+      <a href="#" title="Instagram" aria-label="Instagram">Instagram</a>
+    </div>
+    <button class="search-btn" aria-label="Szukaj">🔍 Szukaj</button>
+  </div>
+</div>
+
+<script src="../../weekendfm-2025/assets/lib/bootstrap-5.3.7-dist/js/bootstrap.bundle.js"></script>
+<script>
+  // Ukrywanie top-bar przy scrollowaniu w dół i pokazanie przy scrollowaniu w górę
+  let lastScrollTop = 0;
+  const topBar = document.querySelector('.top-bar');
+
+  window.addEventListener('scroll', () => {
+    let st = window.pageYOffset || document.documentElement.scrollTop;
+    if (st > lastScrollTop && st > 50) {
+      // scroll w dół -> ukryj top-bar
+      topBar.classList.add('hidden');
+    } else {
+      // scroll w górę -> pokaż top-bar
+      topBar.classList.remove('hidden');
+    }
+    lastScrollTop = st <= 0 ? 0 : st;
+  });
+
+  // Bottom bar mobile - rotacja info z napis "Napisz do nas"
+  const bottomBarInfo = document.querySelector('.bottom-bar .info-text');
+  if(bottomBarInfo) {
+    const nowPlayingText = bottomBarInfo.querySelector('.now-playing');
+    const writeUsBtn = document.querySelector('.write-us-btn');
+
+    if(nowPlayingText && writeUsBtn){
+      // Na mobile chcemy rotować co 5s:
+      setInterval(() => {
+        if(nowPlayingText.style.display === 'none') {
+          nowPlayingText.style.display = 'inline';
+          writeUsBtn.style.display = 'none';
+        } else {
+          nowPlayingText.style.display = 'none';
+          writeUsBtn.style.display = 'inline-flex';
+        }
+      }, 5000);
+    }
+  }
+
+const header = document.querySelector('header');
+// const topBar = document.querySelector('.top-bar');
+const middleBar = document.querySelector('.middle-bar');
+const bottomBar = document.querySelector('.bottom-bar');
+
+// wysokość header
+const headerHeight = header.getBoundingClientRect().height;
+console.log('Header height:', headerHeight);
+
+// wysokość poszczególnych barów
+const topBarHeight = topBar ? topBar.getBoundingClientRect().height : 0;
+const middleBarHeight = middleBar ? middleBar.getBoundingClientRect().height : 0;
+const bottomBarHeight = bottomBar ? bottomBar.getBoundingClientRect().height : 0;
+
+console.log('Top bar height:', topBarHeight);
+console.log('Middle bar height:', middleBarHeight);
+console.log('Bottom bar height:', bottomBarHeight);
+</script>
+
+</body>
+</html>

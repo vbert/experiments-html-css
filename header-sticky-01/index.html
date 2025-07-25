@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Custom Scroll Header</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <style>
+    body {
+      margin: 0;
+      padding-top: 132px; /* wysokość całego headera */
+    }
+
+    header#main-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1050;
+      transition: transform 0.3s ease;
+    }
+
+    .top-bar {
+      height: 40px;
+      background-color: #f8f9fa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: height 0.3s ease, opacity 0.3s ease;
+      overflow: hidden;
+    }
+
+    .middle-bar {
+      height: 60px;
+      background-color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1rem;
+      transition: padding 0.3s ease;
+    }
+
+    .bottom-bar {
+      height: 32px;
+      background-color: #343a40;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      padding: 0 1rem;
+    }
+
+    .logo {
+      height: 40px;
+      transition: height 0.3s ease;
+    }
+
+    header.shrunk .top-bar {
+      height: 0;
+      opacity: 0;
+    }
+
+    header.shrunk .logo {
+      height: 30px;
+    }
+
+    main {
+      padding: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header id="main-header">
+    <div class="top-bar">
+      <strong>Top Bar</strong>
+    </div>
+    <div class="middle-bar">
+      <img src="radio-weekendfm-logo.svg" class="logo" alt="Logo" />
+      <span>Telefon: 123 456 789</span>
+    </div>
+    <div class="bottom-bar">
+      <nav class="nav">
+        <a class="nav-link text-white" href="#">Start</a>
+        <a class="nav-link text-white" href="#">O nas</a>
+        <a class="nav-link text-white" href="#">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <h1>Treść strony</h1>
+    <p>Scrolluj w dół, by zobaczyć efekt...</p>
+    <p style="height: 2000px;"></p>
+  </main>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const header = document.getElementById("main-header");
+      let lastScrollY = window.scrollY;
+
+      window.addEventListener("scroll", () => {
+        const currentScrollY = window.scrollY;
+
+        if (currentScrollY > lastScrollY && currentScrollY > 50) {
+          // Scroll w dół
+          header.classList.add("shrunk");
+        } else {
+          // Scroll w górę
+          header.classList.remove("shrunk");
+        }
+
+        lastScrollY = currentScrollY;
+      });
+    });
+  </script>
+
+</body>
+</html>
