@@ -54,7 +54,7 @@
             flex-direction: column;
         }
 
-        .topbar {
+        .top-bar {
             background: white;
             padding: 15px 20px;
             display: flex;
@@ -111,7 +111,7 @@
 
         .btn-primary:hover {
             border-color: #2563eb;
-            background: rgba(59, 130, 246, 0.1);
+            background: rgba(59, 130, 246, 0.2);
         }
 
         .btn-edit {
@@ -121,7 +121,7 @@
 
         .btn-edit:hover {
             border-color: #059669;
-            background: rgba(16, 185, 129, 0.1);
+            background: rgba(16, 185, 129, 0.2);
         }
 
         .btn-delete {
@@ -131,7 +131,7 @@
 
         .btn-delete:hover {
             border-color: #dc2626;
-            background: rgba(239, 68, 68, 0.1);
+            background: rgba(239, 68, 68, 0.2);
         }
 
         /* Wyszukiwarka */
@@ -243,7 +243,7 @@
             border: 1px solid #080b10;
         }
 
-        .dark-mode .topbar,
+        .dark-mode .top-bar,
         .dark-mode .modal-content,
         .dark-mode table {
             background: #1e293b;
@@ -271,7 +271,7 @@
     </div>
 
     <div class="main">
-        <div class="topbar">
+        <div class="top-bar">
             <h1>Pulpit administratora</h1>
             <button class="btn btn-primary" title="Przełącz tryb ciemny" onclick="toggleDarkMode()">🌙 Tryb ciemny</button>
         </div>
@@ -319,8 +319,7 @@
                         <td>Administrator</td>
                         <td>
                             <button class="btn btn-edit" title="Edytuj użytkownika" onclick="editUser(this)">✏️</button>
-                            <button class="btn btn-delete" title="Usuń użytkownika"
-                                onclick="deleteUser(this)">🗑️</button>
+                            <button class="btn btn-delete" title="Usuń użytkownika" onclick="deleteUser(this)">🗑️</button>
                         </td>
                     </tr>
                     <tr>
@@ -330,8 +329,7 @@
                         <td>Moderator</td>
                         <td>
                             <button class="btn btn-edit" title="Edytuj użytkownika" onclick="editUser(this)">✏️</button>
-                            <button class="btn btn-delete" title="Usuń użytkownika"
-                                onclick="deleteUser(this)">🗑️</button>
+                            <button class="btn btn-delete" title="Usuń użytkownika" onclick="deleteUser(this)">🗑️</button>
                         </td>
                     </tr>
                 </tbody>
@@ -352,8 +350,7 @@
             </select>
             <div style="display:flex; justify-content: flex-end; gap:10px;">
                 <button class="btn btn-delete" title="Anuluj" onclick="closeModal()">Anuluj</button>
-                <button class="btn btn-primary" title="Zapisz użytkownika" id="saveBtn"
-                    onclick="saveUser()">Zapisz</button>
+                <button class="btn btn-primary" title="Zapisz użytkownika" id="saveBtn" onclick="saveUser()">Zapisz</button>
             </div>
         </div>
     </div>
