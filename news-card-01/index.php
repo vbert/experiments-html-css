@@ -52,7 +52,7 @@ $promotedItems = [
     [
         'url' => '/wiadomosci/noc-muzeow',
         'title' => 'Noc Muzeów w Chojnicach: bezpłatne wejście do galerii',
-        'subtitle' => null,
+        'subtitle' => 'Degustacje i koncerty na rynku',
         'image' => [
             'src' => 'https://picsum.photos/id/1060/960/540',
             'srcset' => [
@@ -62,7 +62,11 @@ $promotedItems = [
             'ratio' => '16/9',
         ],
         'publishedAt' => '2025-10-12T10:00:00+02:00',
-        'galleryCount' => 6
+        'regions' => [
+            ['name' => 'Chojnice', 'url' => '/region/chojnice'],
+            ['name' => 'Świecie', 'url' => '/region/swiecie'],
+        ],
+        'galleryCount' => 12
     ],
     [
         'url' => '/wiadomosci/nowy-park-w-swieciu',
@@ -202,20 +206,28 @@ $pagedItems = [
         <!-- MAIN: JEDYNKA + PROMOWANE -->
         <main>
             <section class="hero">
-                <?php renderNewsCard($leadItem, ['variant' => 'lead', 'headingTag' => 'h1']); ?>
+                <?php renderNewsCard($leadItem, [
+                    'variant' => 'lead',
+                    'headingTag' => 'h1',
+                    'sizes' => '(min-width: 1400px) 933px, (min-width: 1024px) 66vw, 100vw'
+                ]); ?>
             </section>
 
             <section class="featured-strip">
-                <?php renderFeaturedStrip($promotedChunks[0] ?? []); ?>
+                <?php renderFeaturedStrip($promotedChunks[0] ?? [], [
+                    'size' => '(min-width: 1400px) 456px, (min-width: 1024px) 33vw, (min-width: 768px) 45vw, 100vw'
+                ]); ?>
             </section>
 
             <div class="ad-slot">
                 <!-- reklama / moduł -->
-                <h2>reklama / moduł</h2>
+                <!-- <h2>reklama / moduł</h2> -->
             </div>
 
             <section class="featured-strip">
-                <?php renderFeaturedStrip($promotedChunks[1] ?? []); ?>
+                <?php renderFeaturedStrip($promotedChunks[1] ?? [], [
+                    'size' => '(min-width: 1400px) 456px, (min-width: 1024px) 33vw, (min-width: 768px) 45vw, 100vw'
+                ]); ?>
             </section>
         </main>
 
@@ -223,7 +235,11 @@ $pagedItems = [
         <div class="below-main">
             <section class="list-flex">
                 <?php foreach ($pagedItems as $n) {
-                    renderNewsCard($n, ['variant' => 'list', 'headingTag' => 'h3']);
+                    renderNewsCard($n, [
+                        'variant' => 'list',
+                        'headingTag' => 'h3',
+                        'sizes' => '(min-width: 1024px) 360px, 100vw'
+                    ]);
                 } ?>
             </section>
 

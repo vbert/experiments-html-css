@@ -6,11 +6,11 @@
     --gap: 16px;
     --gap-sm: 12px;
 
-    /* wysokości/szerokości dla listy */
+    /* LIST (desktop) */
     --list-media-h: 220px;
-    /* stała wysokość zdjęcia w kartach listy (desktop) */
+    /* stała wysokość zdjęcia w kartach listy */
     --list-media-w: 360px;
-    /* stała szerokość kolumny media w kartach listy (desktop) */
+    /* stała szerokość kolumny media w kartach listy */
 }
 
 * {
@@ -48,20 +48,14 @@ a:focus {
     padding-inline: var(--gap);
 }
 
-/* ---- MAIN: jedynka + promowane (pełna szerokość kontenera) ---- */
+/* MAIN = jedynka + promowane (blokowo, bez grida) */
 main {
     display: block;
 }
 
 /* ============================================================
-   HERO (JEDYNKA)
-   - desktop: wewnętrzny grid 3 kolumn; zdjęcie = span 2
-   - mobile: 1 kolumna (foto u góry)
+   KOMPONENT KARTY (wspólny)
    ============================================================ */
-.hero {
-    margin: 0 0 var(--gap) 0;
-}
-
 .news-card {
     --ratio: 16/9;
     --gap-i: var(--gap-sm);
@@ -70,14 +64,15 @@ main {
     --subtitle-size: .95rem;
     --lead-size: 1rem;
 
-    display: grid;
-    grid-template-rows: auto 1fr;
+    display: flex;
+    /* bazowo kolumna */
+    flex-direction: column;
     gap: var(--gap-i);
     background: #fff;
     border: none;
-    /* bez borderów */
+    /* brak borderów */
     border-radius: 0;
-    /* bez zaokrągleń */
+    /* brak zaokrągleń */
     color: #111827;
 }
 
@@ -96,6 +91,7 @@ main {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
 }
 
 .news-card__body {
@@ -189,34 +185,49 @@ main {
     -webkit-line-clamp: 3;
 }
 
+/* ============================================================
+   JEDYNKA (HERO) – FLEX
+   desktop: wiersz flex z gapem; foto 2/3, treść 1/3
+   mobile: kolumna (foto na górze)
+   ============================================================ */
+.hero {
+    margin: 0 0 var(--gap) 0;
+}
+
 .news-card--lead {
     --title-size: clamp(1.6rem, 2.2vw, 2rem);
     --lead-size: clamp(1rem, 1.4vw, 1.15rem);
-    display: grid;
     gap: var(--gap);
-    grid-template-columns: 1fr;
-    /* mobile */
-    border: none;
+}
+
+.news-card--lead,
+.featured-strip {
+    contain: layout;
 }
 
 @media (min-width: 1024px) {
     .news-card--lead {
-        /* 3 kolumny wewnątrz – zgodne z promowanymi */
-        grid-template-columns: repeat(3, 1fr);
+        display: flex;
+        flex-direction: row;
         align-items: stretch;
+        gap: var(--gap);
     }
 
     .news-card--lead .news-card__media {
-        grid-column: 1 / span 2;
+        /* 2/3 */
+        flex: 0 0 calc((2 * (100% - (2 * var(--gap)))) / 3 + var(--gap));
+        min-width: 0;
     }
 
-    /* foto = 2 kolumny */
     .news-card--lead .news-card__body {
-        grid-column: 3 / span 1;
+        /* 1/3 */
+        flex: 1 1 0;
+        min-width: 0;
+        padding: var(--gap-sm);
     }
 
     .news-card--lead .news-card__figure {
-        aspect-ratio: auto;
+        aspect-ratio: var(--ratio);
         height: 100%;
     }
 
@@ -228,23 +239,19 @@ main {
 }
 
 /* ============================================================
-   PROMOWANE – paski po 3 (flex)
+   PROMOWANE – 3x w rzędzie (FLEX)
    ============================================================ */
 .featured-strip {
     display: flex;
+    flex-wrap: nowrap;
     gap: var(--gap);
     align-items: stretch;
-    flex-wrap: nowrap;
     margin: 0 0 var(--gap) 0;
 }
 
 .featured-strip>.news-card {
     flex: 1 1 calc((100% - (2 * var(--gap))) / 3);
     max-width: calc((100% - (2 * var(--gap))) / 3);
-}
-
-.news-card--featured {
-    --title-size: 1.125rem;
 }
 
 @media (max-width: 1023px) {
@@ -266,51 +273,61 @@ main {
 }
 
 /* ============================================================
-   POD MAIN: 2/3 (pozostałe newsy) + 1/3 (aside)
-   kontener .below-main układa dwie kolumny; wewnątrz:
-   - .list-flex to kolumna flex z kartami
-   - .news-card--list to wiersz flex (media lewo, treść prawo)
+   POD MAIN: 2/3 (pozostałe) + 1/3 (aside) – FLEX
    ============================================================ */
 .below-main {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    /* 2/3 | 1/3 */
+    display: flex;
+    flex-direction: row;
     gap: var(--gap);
+    align-items: flex-start;
     margin-top: var(--gap);
 }
 
 @media (max-width: 1023px) {
     .below-main {
-        grid-template-columns: 1fr;
+        flex-direction: column;
     }
 }
 
-/* kolumna pozostałych newsów */
+/* kolumny */
 .list-flex {
+    flex: 2 1 0;
+    min-width: 0;
     display: flex;
     flex-direction: column;
     gap: var(--gap);
 }
 
-/* karta listy jako wiersz flex na desktopie */
+.aside-col {
+    flex: 1 1 0;
+    min-width: 0;
+}
+
+/* ============================================================
+   LISTA – karty jako WIERSZ FLEX (media lewo, treść prawo)
+   ============================================================ */
 .news-card--list {
     --title-size: 1.0625rem;
 }
 
 @media (min-width: 1024px) {
     .news-card--list {
-        display: flex;
+        flex-direction: row;
+        /* wiersz */
         gap: var(--gap-sm);
         align-items: stretch;
     }
 
     .news-card--list .news-card__media {
-        flex: 0 0 var(--list-media-w); /* stała szerokość kolumny media */
+        flex: 0 0 var(--list-media-w);
+        /* stała szerokość kolumny media */
+        max-width: var(--list-media-w);
     }
 
     .news-card--list .news-card__figure {
         aspect-ratio: auto;
-        height: var(--list-media-h); /* stała wysokość zdjęcia */
+        height: var(--list-media-h);
+        /* stała wysokość zdjęcia */
     }
 
     .news-card--list .news-card__img {
@@ -321,17 +338,16 @@ main {
 
     .news-card--list .news-card__body {
         flex: 1 1 auto;
-        max-height: var(--list-media-h); /* karta nie wyższa niż foto */
+        max-height: var(--list-media-h);
+        /* karta nie wyższa niż foto */
         overflow: hidden;
         padding: var(--gap-sm);
     }
 }
 
-.aside-col {
-    display: block;
-}
-
-/* reklama/wstawki (opcjonalne) */
+/* ============================================================
+   Wstawki / reklamy
+   ============================================================ */
 .ad-slot {
     margin: var(--gap) 0;
 }
