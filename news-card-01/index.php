@@ -42,7 +42,7 @@ $promotedItems = [
             ],
             'ratio' => '16/9',
         ],
-        'publishedAt' => '2025-10-12T14:45:00+02:00',
+        'publishedAt' => '2025-02-02T14:45:00+02:00',
         'regions' => [
             ['name' => 'Chojnice', 'url' => '/region/chojnice'],
             ['name' => 'Świecie', 'url' => '/region/swiecie'],
