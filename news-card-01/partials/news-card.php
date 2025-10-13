@@ -1,6 +1,6 @@
 <?php
 /**
- * NEWS CARDS – komponenty frontendu (PHP 8.2)
+ * NEWS CARDS – komponenty frontend-u (PHP 8.2)
  * --------------------------------------------
  *  renderNewsCard($data, $opts = [])
  *  renderFeaturedStrip($items, $opts = [])
