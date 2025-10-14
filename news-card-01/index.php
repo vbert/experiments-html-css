@@ -196,7 +196,7 @@ $pagedItems = [
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>News Cards</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -209,13 +209,13 @@ $pagedItems = [
                 <?php renderNewsCard($leadItem, [
                     'variant' => 'lead',
                     'headingTag' => 'h1',
-                    'sizes' => '(min-width: 1400px) 933px, (min-width: 1024px) 66vw, 100vw'
+                    // 'sizes' => '(min-width: 1400px) 933px, (min-width: 1024px) 66vw, 100vw'
                 ]); ?>
             </section>
 
             <section class="featured-strip">
                 <?php renderFeaturedStrip($promotedChunks[0] ?? [], [
-                    'size' => '(min-width: 1400px) 456px, (min-width: 1024px) 33vw, (min-width: 768px) 45vw, 100vw'
+                    // 'size' => '(min-width: 1400px) 456px, (min-width: 1024px) 33vw, (min-width: 768px) 45vw, 100vw'
                 ]); ?>
             </section>
 
@@ -226,7 +226,7 @@ $pagedItems = [
 
             <section class="featured-strip">
                 <?php renderFeaturedStrip($promotedChunks[1] ?? [], [
-                    'size' => '(min-width: 1400px) 456px, (min-width: 1024px) 33vw, (min-width: 768px) 45vw, 100vw'
+                    // 'size' => '(min-width: 1400px) 456px, (min-width: 1024px) 33vw, (min-width: 768px) 45vw, 100vw'
                 ]); ?>
             </section>
         </main>
@@ -238,7 +238,7 @@ $pagedItems = [
                     renderNewsCard($n, [
                         'variant' => 'list',
                         'headingTag' => 'h3',
-                        'sizes' => '(min-width: 1024px) 360px, 100vw'
+                        // 'sizes' => '(min-width: 1024px) 360px, 100vw'
                     ]);
                 } ?>
             </section>

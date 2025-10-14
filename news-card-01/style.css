@@ -34,10 +34,10 @@ a:focus {
 }
 
 /* zero ozdobników */
-.news-card,
+/* .news-card,
 .news-card * {
     transition: none !important;
-}
+} */
 
 /* ============================================================
    STRONA
