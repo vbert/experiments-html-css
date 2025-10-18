@@ -46,7 +46,7 @@ if (!function_exists('helperFormatPublishedDate')) {
 if (!function_exists('helperHtmlEl')) {
     /**
      * Uniwersalny generator elementu HTML.
-     * - wspiera class jako string|array, style jako string|array oraz podtablice data/aria
+     * - wspiera class jako string|array, style jako string|array oraz pod-tablice data/aria
      * - wartości boolean: true => sam atrybut (np. itemscope), false/null => pomija
      * - content: string lub array (łączone bez separatora)
      */
