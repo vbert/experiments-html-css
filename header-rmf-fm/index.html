@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="pl">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,22 +8,266 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="bootstrap-5.3.7/reboot.css">
     <link rel="stylesheet" href="bootstrap-5.3.7/grid.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <header>
-        <h1>Eksperyment: header-rmf-fm</h1>
-    </header>
+    <div id="sticky-wrapper" class="sticky-wrapper">
+        <header class="main-header">
+            <div class="top-line d-none d-xl-block">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <ul class="nav top-line_nav">
+                                <li><a href="/" class="active">RMF FM</a></li>
+                                <li><a target="_blank" rel="noopener" href="https://www.rmfon.pl/">RMF ON</a></li>
+                                <li><a target="_blank" rel="noopener" href="https://www.rmf24.pl/">RMF24</a></li>
+                                <li><a target="_blank" rel="noopener" href="https://www.rmfclassic.pl/">RMF Classic</a></li>
+                                <li><a target="_blank" rel="noopener" href="https://www.rmfmaxx.pl/">RMF MAXX</a></li>
+                                <li><a target="_blank" rel="noopener" href="https://www.rmf24.pl/radio">Radio RMF24</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-    <main>
-        <!-- Treść strony -->
-    </main>
+            <div class="medium-line">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-3 col-xl-10 position-relative">
+                            <a href="/" class="navbar-brand">
+                                <img src="img/logo-bez-x2.png" alt="RMF FM">
+                            </a>
 
-    <footer>
-        <!-- Stopka -->
-    </footer>
+                            <ul class="nav medium-line_nav d-none d-xl-flex top-main-menu">
+                                <li><a href="/hot-news.html">Hot News</a></li>
+                                <li class="open-sub-menu"><a href="/rozrywka.html">Rozrywka</a>
+                                    <div class="submenu">
+                                        <a href="/rozrywka/plotki.html">Plotki</a>
+                                        <a href="/rozrywka/show-biznes.html">Show-biznes</a>
+                                        <a href="/rozrywka/filmy-i-seriale.html">Filmy i seriale</a>
+                                    </div>
+                                </li>
+                                <li class="open-sub-menu"><a href="/styl-zycia.html">Styl życia</a>
+                                    <div class="submenu">
+                                        <a href="/styl-zycia/moda-i-uroda.html">Moda i uroda</a>
+                                        <a href="/styl-zycia/zdrowie.html">Zdrowie</a>
+                                        <a href="/styl-zycia/horoskop.html">Horoskop</a>
+                                    </div>
+                                </li>
+                                <li class="d-none d-xl-block"><a href="/#konkursy">Konkursy</a></li>
+                                <li class="d-none d-xl-block"><a href="#" class="open-mega-menu">Radio</a></li>
+                                <li class="d-none d-xl-block loteria-button" style="cursor: pointer;"><a href="/loteria">Loteria SMS</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="col-9 col-xl-2 justify-content-end d-flex gap-3">
+
+                            <a target="_blank" href="https://www.rmfon.pl/stacja/rmf-fm" class="medium-line_play_link d-inline-flex align-items-center gap-2">
+                                <span class="d-none d-lg-block">słuchaj</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path fill-rule="evenodd" d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z" clip-rule="evenodd"></path></svg>
+                            </a>
+
+                            <button aria-label="Rozwiń menu" type="button" class="medium-line_btn_menu d-inline-block d-xl-none">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="medium-line_btn_hamburger"><path fill-rule="evenodd" d="M3 6.75A.75.75 0 0 1 3.75 6h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 6.75ZM3 12a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 12Zm0 5.25a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1-.75-.75Z" clip-rule="evenodd"></path></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="medium-line_btn_close"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"></path></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main-header_megamenu">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-3">
+                            <a class="menu-pos-big" href="/poplista.html" title="Poplista">Poplista</a>
+                            <a class="menu-pos-big" href="https://live.rmf.fm" title="Co było grane?">Co było grane?</a>
+                            <a class="menu-pos-big" href="/r/programy.html">Programy</a>
+                            <a class="menu-pos-big" href="/ramowka/">Ramówka</a>
+                            <a class="menu-pos-big" href="/radio/">Odbiór</a>
+                            <a class="menu-pos-big" href="/polecamy/">Polecamy</a>
+                            <a class="menu-pos-big" href="/radio/kontakt.html">Kontakt</a>
+                        </div>
+
+                        <div class="col-xl-3">
+                            <h3><a href="/poplista.html" title="Poplista">Poplista</a></h3>
+                            <div class="d-flex gap-3 mb-3">
+                                <img alt="Fukaj, Vito Bambino - Zabiorę Cię tam" loading="lazy" class="lazyload listing-item_cover" src="//i.static.rmf.pl/107/200_200_fukaj-vito.jpg">
+                                <div class="listing-item_title flex-grow-1">
+                                    <strong>1</strong>
+                                    <br>
+                                    <b>Fukaj, Vito Bambino</b>
+                                    Zabiorę Cię tam
+                                </div>
+                            </div>
+                            <div class="d-flex gap-3 mb-3">
+                                <img alt="Rudimental, Khalid - All I Know" loading="lazy" class="lazyload listing-item_cover" src="//i.static.rmf.pl/107/200_200_rudimental-x-khalid.jpg">
+                                <div class="listing-item_title flex-grow-1">
+                                    <strong>2</strong>
+                                    <br>
+                                    <b>Rudimental, Khalid</b>
+                                    All I Know
+                                </div>
+                            </div>
+                            <div class="d-flex gap-3 mb-3">
+                                <img alt="Kuba i Kuba, EMO - Więcej nas" loading="lazy" class="lazyload listing-item_cover" src="//i.static.rmf.pl/107/200_200_kuba-i-kuba-wiecej-nas.jpg">
+                                <div class="listing-item_title flex-grow-1">
+                                    <strong>3</strong>
+                                    <br>
+                                    <b>Kuba i Kuba, EMO</b>
+                                    Więcej nas
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-3">
+                            <div>
+                                <h3 class="mb-3"><a href="https://live.rmf.fm/" title="Co było grane?">Co było grane?</a></h3>
+                                <div id="now-playing-menu-section">
+                                    <div class="d-flex gap-3 mb-3">
+                                        <img alt="pszona - Zły" loading="lazy" class="lazyload listing-item_cover" src="https://i.static.rmf.pl/107/100_100_pszona-lekko.jpg">
+                                        <div class="listing-item_title flex-grow-1">
+                                            <strong>16:50</strong>
+                                            <br>
+                                            <b>pszona</b>
+                                            Zły
+                                        </div>
+                                    </div>
+                                    <div class="d-flex gap-3 mb-3">
+                                        <img alt="Armin van Buuren / Billen Ted / JC Stewart - Come Around Again" loading="lazy" class="lazyload listing-item_cover" src="https://i.static.rmf.pl/102/100_100_armin-van-buuren.jpg">
+                                        <div class="listing-item_title flex-grow-1">
+                                            <strong>16:53</strong>
+                                            <br>
+                                            <b>Armin van Buuren / Billen Ted / JC Stewart</b>
+                                            Come Around Again
+                                        </div>
+                                    </div>
+                                    <div class="d-flex gap-3 mb-3">
+                                        <img alt="Cher - If I Could Turn Back Time" loading="lazy" class="lazyload listing-item_cover" src="https://i.static.rmf.pl/67/100_100_plyta_1672.jpg">
+                                        <div class="listing-item_title flex-grow-1">
+                                            <strong>17:03</strong>
+                                            <br>
+                                            <b>Cher</b>
+                                            If I Could Turn Back Time
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-3">
+                            <div>
+                                <h3 class="mb-3"><a rel="noopener" href="https://www.rmfon.pl/" target="_blank">RMF ON - Twoja muzyka</a></h3>
+                                <a href="https://www.rmfon.pl/play,5" target="_blank" class="d-flex gap-3 mb-3">
+                                    <img alt="Armin van Buuren / Billen Ted / JC Stewart - Come Around Again" loading="lazy" class="lazyload listing-item_cover" src="https://i.static.rmf.pl/102/100_100_armin-van-buuren.jpg">
+                                    <div class="listing-item_title flex-grow-1">
+                                        <strong>RMF FM</strong>
+                                        <br>
+                                        <b>Armin van Buuren / Billen Ted / JC Stewart</b>
+                                        Come Around Again
+                                    </div>
+                                </a>
+                                <a href="https://www.rmfon.pl/play,190" target="_blank" class="d-flex gap-3 mb-3">
+                                    <img alt="Rolling Stones - Brown Sugar" loading="lazy" class="lazyload listing-item_cover" src="https://i.static.rmf.pl/80/100_100_plyta_1047.jpg">
+                                    <div class="listing-item_title flex-grow-1">
+                                        <strong>Radio RMF24</strong>
+                                        <br>
+                                        <b>Rolling Stones</b>
+                                        Brown Sugar
+                                    </div>
+                                </a>
+                                <a href="https://www.rmfon.pl/play,115" target="_blank" class="d-flex gap-3 mb-3">
+                                    <img alt="Ava Max - Torn" loading="lazy" class="lazyload listing-item_cover" src="https://i.static.rmf.pl/98/100_100_ava-max.jpg">
+                                    <div class="listing-item_title flex-grow-1">
+                                        <strong>RMF w pracy</strong>
+                                        <br>
+                                        <b>Ava Max</b>
+                                        Torn
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bottom-line d-none d-xl-block">
+                <div class="container">
+                    <div class="row align-items-end">
+                        <div class="col-lg-9">
+                            <div class="bottom-line_fakty">
+                                w Faktach:
+                                <span><a href="https://www.rmf24.pl/fakty/swiat/news-gigantyczny-karambol-na-autostradzie-50-aut-powaznie-ranni,nId,8032671" target="_blank">Gigantyczny karambol na autostradzie. 50 aut, poważnie ranni</a></span>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 text-end justify-content-end pb-2 d-flex">
+                            <a rel="noopener" class="mx-2" title="Facebook" href="https://www.facebook.com/rmffm" target="_blank">
+                                <img class="lazyload" loading="lazy" src="img/ics-fb.png?1" width="32" height="32" alt="Facebook">
+                            </a>
+                            <a rel="noopener" class="mx-2" title="YouTube" href="https://www.youtube.com/radiormf" target="_blank">
+                                <img class="lazyload" loading="lazy" src="img/ics-youtube.png?1" width="32" height="32" alt="YouTube">
+                            </a>
+                            <a rel="noopener" class="mx-2" title="Instagram" href="https://instagram.com/radio_rmffm" target="_blank">
+                                <img class="lazyload" loading="lazy" src="img/ics-instagram.png?1" width="32" height="32" alt="Instagram">
+                            </a>
+                            <a rel="noopener" class="mx-2" title="TikTok" href="https://www.tiktok.com/@radio_rmffm" target="_blank">
+                                <img class="lazyload" loading="lazy" src="img/ics-tiktok.png?1" width="32" height="32" alt="TikTok">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+
+    <div class="content">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h1>header-rmf-fm</h1>
+                    <p>Testowanie implementacji sticky headera na wzór strony rmf.fm</p>
+                </div>
+            </div>
+        </div>
+        <section class="additional-paragraphs">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <p>Paragraf 1 — To jest przykładowy tekst, który służy do testowania przewijania i zachowania sticky headera.</p>
+                        <p>Paragraf 2 — Powtarzam treść, żeby utworzyć więcej zawartości na stronie i zobaczyć efekt nagłówka.</p>
+                        <p>Paragraf 3 — Testowy paragraf z prostym tekstem demonstracyjnym.</p>
+                        <p>Paragraf 4 — Kolejny wiersz tekstu, aby wydłużyć stronę.</p>
+                        <p>Paragraf 5 — Dodaję jeszcze jeden akapit dla pewności.</p>
+                        <p>Paragraf 6 — Sprawdzanie przewijania i pozycji elementów nagłówka.</p>
+                        <p>Paragraf 7 — Lorem ipsum zastąpiony treścią po polsku na potrzeby testu.</p>
+                        <p>Paragraf 8 — Jeszcze więcej tekstu, aby symulować realną zawartość artykułu.</p>
+                        <p>Paragraf 9 — Paragraf testowy numer dziewięć.</p>
+                        <p>Paragraf 10 — Paragraf testowy numer dziesięć.</p>
+                        <p>Paragraf 11 — Paragraf testowy numer jedenaście.</p>
+                        <p>Paragraf 12 — Paragraf testowy numer dwanaście.</p>
+                        <h2>Podsumowanie</h2>
+                        <p>To jest podsumowanie testu sticky headera.</p>
+                        <p>Paragraf 1 — To jest przykładowy tekst, który służy do testowania przewijania i zachowania sticky headera.</p>
+                        <p>Paragraf 2 — Powtarzam treść, żeby utworzyć więcej zawartości na stronie i zobaczyć efekt nagłówka.</p>
+                        <p>Paragraf 3 — Testowy paragraf z prostym tekstem demonstracyjnym.</p>
+                        <p>Paragraf 4 — Kolejny wiersz tekstu, aby wydłużyć stronę.</p>
+                        <p>Paragraf 5 — Dodaję jeszcze jeden akapit dla pewności.</p>
+                        <p>Paragraf 6 — Sprawdzanie przewijania i pozycji elementów nagłówka.</p>
+                        <p>Paragraf 7 — Lorem ipsum zastąpiony treścią po polsku na potrzeby testu.</p>
+                        <p>Paragraf 8 — Jeszcze więcej tekstu, aby symulować realną zawartość artykułu.</p>
+                        <p>Paragraf 9 — Paragraf testowy numer dziewięć.</p>
+                        <p>Paragraf 10 — Paragraf testowy numer dziesięć.</p>
+                        <p>Paragraf 11 — Paragraf testowy numer jedenaście.</p>
+                        <p>Paragraf 12 — Paragraf testowy numer dwanaście.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 
     <script src="service.js"></script>
     <script src="script.js" defer></script>
 </body>
+
 </html>
