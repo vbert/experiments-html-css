@@ -244,7 +244,61 @@ $pagedItems = [
             </section>
 
             <aside class="aside-col">
-                <!-- Twoje dodatki / reklamy / rankingi -->
+                <section class="aside-box">
+                    <div class="aside-box__label">Na skróty</div>
+                    <ul class="quick-links">
+                        <li><a href="/na-zywo">Słuchaj na żywo <span class="quick-links__meta">RMF FM</span></a></li>
+                        <li><a href="/pogoda">Pogoda na jutro <span class="quick-links__meta">+ radar</span></a></li>
+                        <li><a href="/program">Program dnia <span class="quick-links__meta">godz. 6-24</span></a></li>
+                        <li><a href="/kontakt">Kontakt z redakcją <span class="quick-links__meta">napisz do nas</span></a></li>
+                    </ul>
+                </section>
+
+                <section class="aside-box">
+                    <div class="aside-box__label">Najczęściej czytane</div>
+                    <ol class="top-list">
+                        <li>
+                            <a href="/wiadomosci/awaria-wodociagow">Awaria wodociągów: przerwy w dostawach na północy miasta</a>
+                            <span class="top-list__meta">09:15</span>
+                        </li>
+                        <li>
+                            <a href="/wiadomosci/nowy-tramwaj">Nowy tramwaj w testach. Jak wypada na ulicach?</a>
+                            <span class="top-list__meta">08:40</span>
+                        </li>
+                        <li>
+                            <a href="/sport/derby">Derby regionu: emocjonujący remis 2:2</a>
+                            <span class="top-list__meta">wczoraj</span>
+                        </li>
+                        <li>
+                            <a href="/magazyn/kuchnia">Kuchnia: pierogi z leśnymi grzybami według babcinego przepisu</a>
+                            <span class="top-list__meta">wideo</span>
+                        </li>
+                    </ol>
+                </section>
+
+                <section class="aside-box aside-box--highlight">
+                    <div class="aside-box__label">Newsletter</div>
+                    <p class="aside-box__desc">Najważniejsze wiadomości dnia na Twojej skrzynce o 7:00. Bez spamu, tylko lokalne konkrety.</p>
+                    <form class="newsletter-form" action="#" method="post">
+                        <label class="sr-only" for="newsletter-email">Adres e-mail</label>
+                        <input type="email" id="newsletter-email" name="email" placeholder="Twój e-mail" required>
+                        <button type="submit">Zapisz mnie</button>
+                    </form>
+                    <p class="aside-box__note">W każdej chwili możesz się wypisać jednym kliknięciem.</p>
+                </section>
+
+                <section class="aside-box">
+                    <div class="aside-box__label">Podcast dnia</div>
+                    <div class="audio-card">
+                        <div class="audio-card__time">12:45</div>
+                        <p class="audio-card__title">Rozmowa z burmistrzem: kiedy nowe ścieżki rowerowe?</p>
+                        <p class="audio-card__meta">18 min · prowadzi Katarzyna Nowicka</p>
+                        <div class="audio-card__actions">
+                            <button type="button" class="btn">▶ Posłuchaj</button>
+                            <button type="button" class="btn btn--ghost">Zapisz na później</button>
+                        </div>
+                    </div>
+                </section>
             </aside>
         </div>
 
