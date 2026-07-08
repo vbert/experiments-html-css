@@ -299,13 +299,13 @@ if (!function_exists('renderFeaturedStrip')) {
 
         $headingTag = $options['headingTag'] ?? 'h2';
 
-        echo '<div class="featured-strip" aria-label="Wiadomości promowane">';
+        echo '<section class="featured-strip" aria-label="Wiadomości promowane">';
         foreach ($items as $n) {
             renderNewsCard($n, [
                 'variant'    => 'featured',
                 'headingTag' => $headingTag,
             ]);
         }
-        echo '</div>';
+        echo '</section>';
     }
 }

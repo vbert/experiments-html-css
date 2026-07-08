@@ -213,11 +213,9 @@ $pagedItems = [
                 ]); ?>
             </section>
 
-            <section class="featured-strip">
-                <?php renderFeaturedStrip($promotedChunks[0] ?? [], [
-                    // 'size' => '(min-width: 1400px) 456px, (min-width: 1024px) 33vw, (min-width: 768px) 45vw, 100vw'
-                ]); ?>
-            </section>
+            <?php renderFeaturedStrip($promotedChunks[0] ?? [], [
+                // 'size' => '(min-width: 1400px) 456px, (min-width: 1024px) 33vw, (min-width: 768px) 45vw, 100vw'
+            ]); ?>
 
             <div class="ad-slot">
                 <!-- reklama / moduł -->
